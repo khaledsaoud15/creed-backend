@@ -1,0 +1,9 @@
+# dependencies
+node_modules
+
+# environment variables
+.env
+
+# build output (optional depending on your project)
+dist
+build
