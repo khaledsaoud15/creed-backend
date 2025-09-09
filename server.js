@@ -7,15 +7,10 @@ require("dotenv").config();
 app.use(passport.initialize());
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+const cors = require("cors");
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://creed-clone.vercel.app"],
-    credentials: true,
-  })
-);
-app.use(
-  cors({
-    origin: "http://localhost:5173",
     credentials: true,
   })
 );
