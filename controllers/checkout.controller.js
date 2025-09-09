@@ -4,6 +4,11 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const Checkout = require("../models/checkout.model");
 
+const callback =
+  process.env.NODE_ENV === "production"
+    ? "https://creed-clone.vercel.app/"
+    : "http://localhost:5173";
+
 const checkoutFN = async (req, res) => {
   try {
     const { userId, cartId } = req.body;
@@ -30,9 +35,8 @@ const checkoutFN = async (req, res) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url:
-        "http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}", // adjust frontend url
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: callback + "success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: callback + "cancel",
       metadata: {
         userId,
         cartId,
