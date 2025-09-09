@@ -13,6 +13,7 @@ const register = async (req, res) => {
   if (user) {
     return responseHandler(res, 400, "User already exists");
   }
+  console.log("password env", process.env.PSW_SECRET);
 
   const hashedPassword = Crypto.AES.encrypt(
     password,
