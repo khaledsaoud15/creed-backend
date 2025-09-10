@@ -10,6 +10,10 @@ const callback =
 console.log(callback);
 
 module.exports = (passport) => {
+  console.log(
+    "Google OAuth callback URL in use:",
+    process.env.GOOGLE_CALLBACK_URL_PRD
+  );
   passport.use(
     new GoogleStrategy(
       {
