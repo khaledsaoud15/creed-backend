@@ -3,9 +3,11 @@ const User = require("../models/user.model");
 const CryptoJs = require("crypto-js");
 
 const callback =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV === "production" && process.env.GOOGLE_CALLBACK_URL_PRD
     ? process.env.GOOGLE_CALLBACK_URL_PRD
     : process.env.GOOGLE_CALLBACK_URL_DEV;
+
+console.log(callback);
 
 module.exports = (passport) => {
   passport.use(

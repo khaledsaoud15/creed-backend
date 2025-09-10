@@ -11,9 +11,11 @@ const jwt = require("jsonwebtoken");
 
 const router = require("express").Router();
 const callback =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV === "production" && process.env.FRONTEND_URL_PRD
     ? process.env.FRONTEND_URL_PRD
     : process.env.FRONTEND_URL_DEV;
+
+console.log(callback);
 
 router.post("/register", validateSchema(userValidationSchema), register);
 router.post("/login", login);
