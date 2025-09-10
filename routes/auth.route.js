@@ -37,8 +37,11 @@ const createToken = (user) => {
   );
 };
 
+console.log("Sending user to Google OAuth with redirect URI:", callback);
+
 router.get(
   "/google/callback",
+
   passport.authenticate("google", { session: false }),
   (req, res) => {
     const token = createToken(req.user);
@@ -51,7 +54,7 @@ router.get(
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    res.redirect(callback);
+    res.redirect(process.env.FRONTEND_URL_PRD);
   }
 );
 
