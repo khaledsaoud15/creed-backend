@@ -10,9 +10,9 @@ app.use(cookieParser());
 const cors = require("cors");
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://creed-clone.vercel.app"],
+    origin: ["http://localhost:3000", "https://creed-clone.vercel.app"],
     credentials: true,
-  })
+  }),
 );
 
 app.use((req, res, next) => {
